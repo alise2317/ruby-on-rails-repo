@@ -1,7 +1,7 @@
-class RkController < ApplicationController
-  def input
-  end
+# frozen_string_literal: true
 
-  def view
-  end
+class RkController < ApplicationController
+  def input; end
+
+  def view; end
 end
