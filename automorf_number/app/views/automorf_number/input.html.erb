@@ -2,7 +2,7 @@
 <p>Find me in app/views/automorf_number/input.html.erb</p>
 <%= form_tag("/automorf_number/view", :method => "get") do %>
  <%= label_tag("Max number:") %>
- <%= text_field_tag %> <br/>
+ <%= text_field_tag(:val) %> <br/>
  <br/>
  <%= submit_tag("Result numbers") %>
 <% end %>
