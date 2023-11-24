@@ -1,0 +1,10 @@
+<h1>Rk#input</h1>
+<h3>Третьякова Ксения Михайловна, ИУ6-34Б,  вариант</h3>
+<p> </p>
+
+<%= form_tag("/main/result", :method => "get") do %>
+    <%= label_tag("") %>
+    <%= text_field_tag(:val) %>
+    <br/>
+    <%= submit_tag("Вычислить") %>
+<% end %>
