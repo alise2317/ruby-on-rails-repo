@@ -1,8 +1,14 @@
-<h1>AutomorfNumber#input</h1>
-<p>Find me in app/views/automorf_number/input.html.erb</p>
+<h1>Автоморфные числа</h1>
+
+<% if flash[:error] %>
+  <div class="error">
+    <%= flash[:error] %>
+  </div>
+<% end %>
+
 <%= form_tag("/automorf_number/view", :method => "get") do %>
- <%= label_tag("Max number:") %>
+ <%= label_tag("Максимальное число:") %>
  <%= text_field_tag(:val) %> <br/>
  <br/>
- <%= submit_tag("Result numbers") %>
+ <%= submit_tag("Результат") %>
 <% end %>
