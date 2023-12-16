@@ -7,7 +7,7 @@ class AutomorfNumberControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get view" do
-    get automorf_number_view_url
+    get automorf_number_view_url, params: {val: 10}
     assert_response :success
   end
 
