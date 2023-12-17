@@ -1,66 +1,3 @@
-<!-- <!DOCTYPE html>
-<html>
-
-<head>
-    <meta http-equiv="Content-Type" content="text/html;
-charset=utf-8" />
-    <title>AJAX lab_9 test</title>
-    <script>
-        lab_9_url = location.protocol + "//" + location.host +
-            "/lab9/view.json"    //возможно lab_9
-        function send_query() {
-            var frm = document.forms.lab_9_form;
-            var param_str = "";
-            var radios = frm.op;
-             for (var i = 0; i < radios.length; i++) { // переделать данный код на свой
-                if (radios[i].checked) {
-                    param_str = "?" +
-                        "v1=" + frm.v1.value +
-                        "&v2=" + frm.v2.value +
-                        "&op=" +
-                        encodeURIComponent(frm.op[i].value)
-                    break;
-                }
-            } 
-            if (param_str == "") return false;
-            var my_JSON_object = {};
-            var http_request = new XMLHttpRequest();
-            http_request.open("GET", lab_9_url + param_str, true);
-            http_request.onreadystatechange = function () {
-                var done = 4, ok = 200;
-                if (http_request.readyState == done &&
-                    http_request.status == ok) {
-                    my_JSON_object =
-                        JSON.parse(http_request.responseText);
-                    show_result(my_JSON_object);
-                }
-            };
-            http_request.send(null);
-            return false;
-        }
-        function show_result(data) {
-            var result = document.getElementById("result");
-            result.innerHTML = "<hr/>Result is: " + data.value +
-                "<hr/><p>" + Date() + "</p>";
-        }
-    </script>
-</head>
-
-<body>
-    <h1>Lab_9#input</h1>
-    <form action="/lab_9/view" accept-charset="UTF-8" method="get">
-        <label for="__________________:">Максимальное число:</label>
-        <input type="text" name="val" id="val" /> <br/>
-        <br/>
-        <input type="submit" name="commit" value="Результат" onclick="return send_query();" />
-    </form>
-
-        
-    <div id="result"></div>
-</body>
-
-</html> -->
-
 <!DOCTYPE html>
 <html>
 
@@ -72,13 +9,18 @@ charset=utf-8" />
 <script src="./main.js"></script>
 
 <body>
-    <h1>Lab_9#input</h1>
-    <div class="form">
-        <span>Максимальное число: </span>
-        <input id="input-max">
-        <button onclick="func()">Результат</button>
+    <div>
+        <label>Максимальное число:</label>
+        <input type="text" name="val" id="val" /> <br />
+        <br />
+        <button type="submit" name="commit" style="width: 80px; height: 20px;"  onclick="return func();"> Результат </button>
     </div>
-    <div id="result">
+    <div id="result"> 
+       
+    </div>
+    <div id="solve">
+
+    </div>
 </body>
 
 </html>

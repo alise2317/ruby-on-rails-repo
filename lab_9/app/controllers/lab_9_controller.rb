@@ -1,5 +1,6 @@
 class Lab9Controller < ApplicationController
   def input
+    # render layout: false
   end
 
   def assertion
@@ -32,8 +33,8 @@ class Lab9Controller < ApplicationController
       format.json do
         render json:
         {
-          type: @result.class.to_s, value: @result,
-          type: @solve.class.to_s, value: @solve
+          result: @result,
+          solve: @solve
         }
       end
     end
