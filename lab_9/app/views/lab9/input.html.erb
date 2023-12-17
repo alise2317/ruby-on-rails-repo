@@ -1,0 +1,14 @@
+<h1>Lab_9#input</h1>
+
+<% if flash[:error] %>
+  <div class="error">
+    <%= flash[:error] %>
+  </div>
+<% end %>
+
+<%= form_tag("/lab_9/view", :method => "get") do %>
+  <%= label_tag("Максимальное число:") %>
+  <%= text_field_tag(:val) %> <br/>
+  <br/>
+  <%= submit_tag("Результат") %>
+ <% end %>
