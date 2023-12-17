@@ -4,19 +4,19 @@ const url = 'http://localhost:3000/lab_9/view.json?val=' + n
 
 
     //var my_JSON_object = {};
-    var xhr = new XMLHttpRequest();      // объект для оправки запроса
-    xhr.open('GET', url, true);          //соединяю с конроллером   
-    xhr.send();                        
-    xhr.onreadystatechange = function () {       // обработчик ответа, кот вызывается после получения данных или ошибки
-        if (xhr.readyState == done && xhr.status == ok) {  // проверка что запрос завершен и данные получены и запрос без ошибок
-            //my_JSON_object = JSON.parse(xhr.responseText);
-            //show_result(my_JSON_object);
-            var responses = JSON.parse(xhr.responseText);  //преобразовываю в js
-            var results = responses.result;     // присваиваю значение из конроллера в переменную
-            document.getElementById("result").innerHTML = "<hr/>Найденное количество значений: "
-                + results + "<hr/>;"     //вывожу результат на страницу html
-        }
-    };
+    // var xhr = new XMLHttpRequest();      // объект для оправки запроса
+    // xhr.open('GET', url, true);          //соединяю с конроллером   
+    // xhr.send();                        
+    // xhr.onreadystatechange = function () {       // обработчик ответа, кот вызывается после получения данных или ошибки
+    //     if (xhr.status === 200) {  // проверка что запрос завершен и данные получены и запрос без ошибок
+    //         //my_JSON_object = JSON.parse(xhr.responseText);
+    //         //show_result(my_JSON_object);
+    //         var responses = JSON.parse(xhr.responseText);  //преобразовываю в js
+    //         var results = responses.result;     // присваиваю значение из конроллера в переменную
+    //         document.getElementById("result").innerHTML = "<hr/>Найденное количество значений: "
+    //             + results + "<hr/>;"     //вывожу результат на страницу html
+    //     }
+    // };
     //xhr.send();        //реальная отправка запроса
 //return false;
 // function show_result(data) {
@@ -53,7 +53,7 @@ const url = 'http://localhost:3000/lab_9/view.json?val=' + n
         table.appendChild(tr);
     });
 
-    document.getElementById("result").innerHTML = "<hr/>Найденное количество значений: " + data.result + "<hr/>;"
+    document.getElementById("result").innerHTML = "<hr/>Найденное количество значений: " + data.result + "<hr/>;";
     document.getElementById("solve").appendChild(table);
 }
 // var link = document.createElement("a");
