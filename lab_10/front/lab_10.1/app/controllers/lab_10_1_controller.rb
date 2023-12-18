@@ -19,7 +19,6 @@ class Lab101Controller < ApplicationController
     @result = count
     @solve = automorphic_nums
 
-    render xml: @result
-    render xml: @solve       # оно должно выглядеть так??
+    render xml: [@result, @solve]
   end
 end

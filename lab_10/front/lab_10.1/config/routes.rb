@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  match '/lab_10/view' => 'lab_10_1#view', via: %i[get post]
   get 'lab_10_1/input'
   get 'lab_10_1/view'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

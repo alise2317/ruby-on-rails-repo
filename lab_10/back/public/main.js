@@ -1,9 +1,9 @@
-const x2js = new X2JS()       // что это такое
+const x2js = new X2JS()       
 const normalize = (str) => str.replaceAll('&lt;', '<').replaceAll('&gt;', '>').replaceAll('&quot;', '"')
 
 func_1 = async () =>{
     const n = document.getElementById("val").value;
-    const url = 'http://localhost:3000/lab_10/view.xml?val=' + n
+    const url = 'http://127.0.0.1:3000/lab_10/view.xml?val=' + n
     
         var table = document.createElement("table");
         table.setAttribute("border", "1");
@@ -20,27 +20,27 @@ func_1 = async () =>{
         table.appendChild(tr);
     
         var response = await fetch(url);
-        var data = x2js.xml_str2json(normalize(await response.text()))  //что оно делает
+        var data = x2js.xml_str2json(normalize(await response.text()))  
     
         console.log(data)
-        data.solve.forEach(function (row) {
+        data.objects.object[1].object.forEach(function (row) {
             var tr = document.createElement("tr");
-            row.forEach(function (value) {
+            row.object.forEach(function (value) {
                 var td = document.createElement("td");
-                td.innerHTML = value;
+                td.innerHTML = value.__text;
                 tr.appendChild(td);
             });
             table.appendChild(tr);
         });
     
-        document.getElementById("result").innerHTML = "<hr/>Найденное количество значений: " + data.result + "<hr/>;";
+        document.getElementById("result").innerHTML = "<hr/>Найденное количество значений: " + data.objects.object[0] + "<hr/>;";
         document.getElementById("solve").appendChild(table);
     }
 
 
     func_2 = async () =>{
         const n = document.getElementById("val").value;
-        const url = 'http://localhost:3000/lab_9/view.json?val=' + n
+        const url = 'http://127.0.0.1:3000/lab_10/view.xml?val=' + n
         var response = await fetch(url);
         const res = normalize(await response.text())
         document.getElementById("result").innerHTML = "<hr/>Найденное количество значений: " + res + "<hr/>;";
