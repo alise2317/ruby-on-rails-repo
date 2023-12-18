@@ -3,7 +3,7 @@ const normalize = (str) => str.replaceAll('&lt;', '<').replaceAll('&gt;', '>').r
 
 func_1 = async () =>{
     const n = document.getElementById("val").value;
-    const url = 'http://localhost:3000/lab_9/view.json?val=' + n
+    const url = 'http://localhost:3000/lab_10/view.xml?val=' + n
     
         var table = document.createElement("table");
         table.setAttribute("border", "1");
@@ -19,7 +19,7 @@ func_1 = async () =>{
         tr.appendChild(th3);
         table.appendChild(tr);
     
-        var response = await fetch('http://localhost:3000/lab_9/view.json?val=' + n);
+        var response = await fetch(url);
         var data = x2js.xml_str2json(normalize(await response.text()))  //что оно делает
     
         console.log(data)

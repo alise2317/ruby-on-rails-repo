@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Lab10</title>
+</head>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/x2js/1.2.0/xml2json.js" integrity="sha512-JW4yY5Dei/4V3FV0BUZwEhdIrhv5jaUQyABWn9YVdXhOiG4++4Bs6sJAgZFSaMBmVKytwPDOaXic7Qs6yqSMwg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="./main.js"></script>
+                                                                  <!-- зачем 2 кнопки? -->
+<body>
+    <div>                                                          
+        <label>Максимальное число:</label>
+        <input type="text" name="val" id="val" /> <br />
+        <br />
+        <button type="submit" name="commit" style="width: 120px; height: 40px;"  onclick="func_1();"> Вычислить на клиенте </button>
+        <button type="submit" name="commit" style="width: 120px; height: 40px;"  onclick="func_2();"> Вычислить на сервере </button>
+    </div>
+    <div id="result"> 
+       
+    </div>
+    <div id="solve">
+
+    </div>
+</body>
+
+</html>
