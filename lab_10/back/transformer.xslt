@@ -24,7 +24,6 @@
       </tr>
     <% end %>
   </table>
-  <!-- <%= link_to "Повторить вычисления", :automorf_number_input %> -->
 </root>
 
 </xsl:template>

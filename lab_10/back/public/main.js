@@ -33,7 +33,7 @@ func_1 = async () =>{
             table.appendChild(tr);
         });
     
-        document.getElementById("result").innerHTML = "<hr/>Найденное количество значений: " + data.objects.object[0] + "<hr/>;";
+        document.getElementById("result").innerHTML = "<hr/>Найденное количество значений: " + data.objects.object[0] + "<hr/>";
         document.getElementById("solve").appendChild(table);
     }
 
@@ -43,5 +43,6 @@ func_1 = async () =>{
         const url = 'http://127.0.0.1:3000/lab_10/view.xml?val=' + n
         var response = await fetch(url);
         const res = normalize(await response.text())
-        document.getElementById("result").innerHTML = "<hr/>Найденное количество значений: " + res + "<hr/>;";
+        document.getElementById("result").innerHTML = "<hr/>Найденное количество значений: " + res.objects.object[0] + "<hr/>";
+        document.getElementById("solve").appendChild(res.objects.object[1]);
     }
