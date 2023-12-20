@@ -1,0 +1,2 @@
+class LogPass < ApplicationRecord
+end
