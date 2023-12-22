@@ -1,3 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <%= stylesheet_link_tag 'styles', media: 'all' %>
 
+  <style>
+    img {
+      max-height: 400px;
+    }
+  </style>
 
-<h1>Наши котики</h1>
+</head>
+<body>
+  <div> <h1>Наши котики</h1> </div>
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card-container">
+          <div class="card">
+            <div class="card-front">
+              <img src="https://cdn.pixabay.com/photo/2016/11/29/09/07/cat-1868606_1280.jpg" class="card-img-top" alt="Image 1">
+              <button class="favorite-button" onclick="toggleFavorite(this)"> ❤️ </button>
+            </div>
+            <div class="card-back">
+            <p style="font-size: 20px;" class="card-text text-center" rows="4">Я кошка Рита. Люблю играть с мячиком и мышами. Кормить меня можно только кормом</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+      <div class="card-container">
+        <div class="card">
+          <div class="card-front">
+            <img src="https://cs6.livemaster.ru/storage/21/39/7ec2b0ee701b4fa69c2970d6c4r2.jpg" class="card-img-top" alt="Image 2">
+            <button class="favorite-button" onclick="toggleFavorite(this)"> ❤️ </button>
+          </div>
+          <div class="card-back">
+            <p style="font-size: 20px;">Я кошка Рита. Люблю играть с мячиком и мышами. Кормить меня можно только кормом</p>
+          </div>
+        </div>
+      </div>
+    </div>
+      <!-- Добавьте другие карточки по аналогии -->
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+  $(document).ready(function () {
+    $('.card').on('click', function () {
+      $(this).toggleClass('is-flipped');
+    });
+  });
+  </script>
+</body>
+</html>
