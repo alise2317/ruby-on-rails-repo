@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-  get '/authorization', to: 'authorization#index'
+  devise_scope :user do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
+  get '/lks', to: 'lks#index'
   root to: "home#index"
 end
