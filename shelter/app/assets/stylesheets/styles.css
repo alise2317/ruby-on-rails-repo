@@ -1,5 +1,7 @@
-.card-container {
+  .card-container {
     perspective: 1000px;
+    flex-direction: row;
+    flex-wrap: nowrap;
   }
   
   .card {

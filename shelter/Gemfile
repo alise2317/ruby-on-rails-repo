@@ -4,6 +4,8 @@ ruby "3.2.2"
 
 gem 'cancancan'
 
+gem "pundit"
+
 gem "bootstrap-rubygem"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"

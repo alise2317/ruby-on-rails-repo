@@ -40,10 +40,25 @@
                   <%= link_to 'Выйти', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
                 </div>
               </li>
-            <% else %>
-              <li class="nav-item">
-                <%= link_to 'Войти', new_user_session_path, class: 'nav-link' %>
+            <% end %>
+            <% if admin_signed_in? %>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <%= current_admin.email %>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <%= link_to 'Личный кабинет', lks_path, class: 'dropdown-item' %>
+                  <%= link_to 'Выйти', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
+                </div>
               </li>
+            <% end %>
+            <% if not user_signed_in? and not admin_signed_in? %>
+            <li class="nav-item">
+            <%= link_to 'Войти для пользователя', new_user_session_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Войти для админа', new_admin_session_path, class: 'nav-link' %>
+          </li>
             <% end %>
           </ul>
         </div>
@@ -52,7 +67,7 @@
 
     <!-- Content -->
      <div class="container mt-4">
-    
+
       <%= yield %>
     </div>
 
