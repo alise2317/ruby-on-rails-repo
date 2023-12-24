@@ -28,7 +28,7 @@
       <label for="input2">Описание</label>
       <input type="text" id="input2" name="input2" required>
 
-      <button type="button" class="btn btn-info" onclick="add()">Добавить карточку</button>
+      <button type="button" class="btn btn-info" onclick="addCard()">Добавить карточку</button>
     </form>
   </div>
 
@@ -41,7 +41,7 @@
         <div class="card-container">
           <div class="card">
             <div class="card-front">
-              <img src="https://cdn.pixabay.com/photo/2016/11/29/09/07/cat-1868606_1280.jpg" class="card-img-top" alt="Image 1">
+              <img src="https://cdn.pixabay.com/photo/2016/11/29/09/07/cat-1868606_1280.jpg" class="card-img-top" alt="Image">
               <button class="favorite-button" onclick="toggleFavorite(this)"> ❤️ </button>
             </div>
             <div class="card-back">
@@ -54,7 +54,7 @@
       <div class="card-container">
         <div class="card">
           <div class="card-front">
-            <img src="https://cs6.livemaster.ru/storage/21/39/7ec2b0ee701b4fa69c2970d6c4r2.jpg" class="card-img-top" alt="Image 2">
+            <img src="https://cs6.livemaster.ru/storage/21/39/7ec2b0ee701b4fa69c2970d6c4r2.jpg" class="card-img-top" alt="Image">
             <button class="favorite-button" onclick="toggleFavorite(this)"> ❤️ </button>
           </div>
           <div class="card-back">
@@ -64,7 +64,7 @@
       </div>
     </div>
     <div id="cardContainer"></div>
-      <!-- Добавьте другие карточки по аналогии -->
+
     </div>
   </div>
 
@@ -81,12 +81,26 @@
   document.addEventListener('DOMContentLoaded', (event) => {
     var cards = JSON.parse(localStorage.getItem('cards')) || [];
     for (var card of cards) {
-        // Здесь код для создания HTML карточек и добавления их на страницу
-        // Используйте card.imgSrc и card.description
+        <!-- Создаем новый элемент div для каждой карточки  -->
+        var cardDiv = document.createElement('div');
+        cardDiv.classList.add('card-container');
+
+        <!-- Создаем изображение и добавляем его в карточку -->
+        var imgElement = document.createElement('img');
+        imgElement.src = card.img1;
+        imgElement.alt = 'Image';
+        cardDiv.appendChild(imgElement);
+
+        <!-- Создаем описание и добавляем его в карточку -->
+        var descriptionElement = document.createElement('p');
+        descriptionElement.textContent = card.description;
+        cardDiv.appendChild(descriptionElement);
+
+        document.getElementById('cardsContainer').appendChild(cardDiv);
     }
 });
 
-    function add() {
+    function addCard() {
       const img1 = document.getElementById('input1').value;
       const description = document.getElementById('input2').value;
 
@@ -97,12 +111,13 @@
     cards.push(card);
 
     localStorage.setItem('cards', JSON.stringify(cards));
+    var n = 1;
 
       var cardHtml = '<div class="col-md-4">' +
             '<div class="card-container">' +
             '<div class="card">' +
             '<div class="card-front">' +
-            '<img src="' + img1 + '" class="card-img-top" alt="Card Image">' +
+            '<img src="' + img1 + '" class="card-img-top" alt=Image>' +
             '<button class="favorite-button" onclick="toggleFavorite(this)"> ❤️ </button>' +
             '</div>' +
             '<div class="card-back">' +
@@ -114,7 +129,7 @@
 
         document.getElementById('cardContainer').innerHTML += cardHtml;
     }
-
+    n += 1;
   </script>
 
 </body>
