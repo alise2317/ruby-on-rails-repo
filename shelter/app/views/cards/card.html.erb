@@ -1,13 +1,15 @@
-# <div class="col-md-4">
-#   <div class="card-container">
-#     <div class="card">
-#       <div class="card-front">
-#         <img src= "<%= card[:img1] %>" class="card-img-top" alt="<%= card[:n] %>">
-#         <button class="favorite-button" onclick="toggleFavorite(this)"> ❤️ </button>
-#       </div>
-#       <div class="card-back">
-#         <p style="font-size: 20px;" class="card-text text-center" rows="4"><%= card[:description] %></p>
-#       </div>
-#     </div>
-#   </div>
-# </div>
+<%= form_with(model: @card, url: cards_path, method: :post) do |form| %>
+  <div>
+    <%= form.label :img_url, 'Адрес изображения' %>
+    <%= form.text_field :img_url, required: true %>
+  </div>
+
+  <div>
+    <%= form.label :description, 'Описание' %>
+    <%= form.text_area :description, required: true %>
+  </div>
+
+  <div>
+    <%= form.submit 'Добавить карточку', class: 'btn btn-info' %>
+  </div>
+<% end %>

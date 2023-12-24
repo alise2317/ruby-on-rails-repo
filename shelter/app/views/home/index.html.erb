@@ -19,6 +19,29 @@
 
 </head>
 <body>
+
+<script>
+function addCard() {
+  const img1 = document.getElementById('input1').value;
+  const description = document.getElementById('input2').value;
+
+  const cardData = { card: { img_url: img1, description: description } };
+
+
+  fetch('/cards', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(cardData),
+  })
+  .then(response => response.json())
+    .then(data => {
+      console.log('Создана новая карточка:', data);
+    })
+}
+</script>
+
   <% if admin_signed_in? %>
     <div class="container">
     <form id="dynamicForm">
@@ -77,60 +100,6 @@
       $(this).toggleClass('is-flipped');
     });
   });
-
-  document.addEventListener('DOMContentLoaded', (event) => {
-    var cards = JSON.parse(localStorage.getItem('cards')) || [];
-    for (var card of cards) {
-        <!-- Создаем новый элемент div для каждой карточки  -->
-        var cardDiv = document.createElement('div');
-        cardDiv.classList.add('card-container');
-
-        <!-- Создаем изображение и добавляем его в карточку -->
-        var imgElement = document.createElement('img');
-        imgElement.src = card.img1;
-        imgElement.alt = 'Image';
-        cardDiv.appendChild(imgElement);
-
-        <!-- Создаем описание и добавляем его в карточку -->
-        var descriptionElement = document.createElement('p');
-        descriptionElement.textContent = card.description;
-        cardDiv.appendChild(descriptionElement);
-
-        document.getElementById('cardsContainer').appendChild(cardDiv);
-    }
-});
-
-    function addCard() {
-      const img1 = document.getElementById('input1').value;
-      const description = document.getElementById('input2').value;
-
-    var card = { img1: img1, description: description };
-
-    var cards = JSON.parse(localStorage.getItem('cards')) || [];
-
-    cards.push(card);
-
-    localStorage.setItem('cards', JSON.stringify(cards));
-    var n = 1;
-
-      var cardHtml = '<div class="col-md-4">' +
-            '<div class="card-container">' +
-            '<div class="card">' +
-            '<div class="card-front">' +
-            '<img src="' + img1 + '" class="card-img-top" alt=Image>' +
-            '<button class="favorite-button" onclick="toggleFavorite(this)"> ❤️ </button>' +
-            '</div>' +
-            '<div class="card-back">' +
-            '<p style="font-size: 20px;" class="card-text text-center">' + description + '</p>' +
-            '</div>' +
-            '</div>' +
-            '</div>' +
-            '</div>';
-
-        document.getElementById('cardContainer').innerHTML += cardHtml;
-    }
-    n += 1;
-  </script>
-
+</script>
 </body>
 </html>

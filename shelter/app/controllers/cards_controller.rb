@@ -1,9 +1,17 @@
 class CardsController < ApplicationController
-  # def create
-  #   img1 = params[:input1]
-  #   description = params[:input2]
-  #   n = 1
-  #   render json: { img1: img1, description: description, n: n}
-  #   n += 1
-  # end
+  def create
+    @card = Card.new(card_params)
+
+    if @card.save
+      render json: @card, status: :created
+    else
+      render json: @card.errors, status: :unprocessable_entity
+    end
+  end
+
+  private
+
+  def card_params
+    params.require(:card).permit(:img_url, :description)
+  end
 end
