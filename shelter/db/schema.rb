@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_24_180822) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_25_111835) do
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -24,6 +24,13 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_24_180822) do
   end
 
   create_table "cards", force: :cascade do |t|
+    t.string "img_url"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "favorites", force: :cascade do |t|
     t.string "img_url"
     t.text "description"
     t.datetime "created_at", null: false

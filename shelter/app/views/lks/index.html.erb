@@ -1,4 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <%= stylesheet_link_tag 'styles', media: 'all' %>
+
+</head>
+<body>
+<script>
+  $(document).ready(function () {
+    $('.card').on('click', function () {
+      $(this).toggleClass('is-flipped');
+    });
+  });
+</script>
+
 <h1> Личный кабинет </h1>
 <br>
 <p style="font-size: 25px;"> Избранное </p>
-
+<div class="cardContainer">
+    <% @k.each do |favorites| %>
+      <div class="col-md-4">
+        <div class="card-container">
+          <div class="card">
+            <div class="card-front">
+              <img src= <%=favorites.img_url%> class="card-img-top" alt="Image">
+            </div>
+            <div class="card-back">
+            <p style="font-size: 20px;" class="card-text text-center" rows="4"><%=favorites.description%></p>
+            </div>
+          </div>
+        </div>
+        <% if user_signed_in? %>
+          <%= form_tag(show_path+"?id=#{card.id}", method: :post) do %>
+            <%= hidden_field_tag :id %>
+            <%= submit_tag "Хочу посмотреть котика", class: 'btn btn-info' %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</body>
+</html>

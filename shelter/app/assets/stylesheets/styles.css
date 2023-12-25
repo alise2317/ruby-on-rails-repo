@@ -1,7 +1,6 @@
   .card-container {
     perspective: 1000px;
-    flex-direction: row;
-    flex-wrap: nowrap;
+    
   }
   
   .card {
@@ -59,3 +58,12 @@
     color: red; /* Цвет сердечка */
   }
   
+  .cardContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+
+  img {
+    max-height: 400px;
+  }

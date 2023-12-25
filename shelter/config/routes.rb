@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  post '/add_to_favorites', to: 'home#add_to_favorites'
+  post '/delete', to: 'home#delete'
+  post '/show', to: 'lks#show'
   resources :cards, only: [:create]
   devise_for :admins
   devise_for :users

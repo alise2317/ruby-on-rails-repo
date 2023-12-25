@@ -7,89 +7,63 @@
   <%= stylesheet_link_tag 'styles', media: 'all' %>
 
 
-  <style>
-    img {
-      max-height: 400px;
-    }
-    cardContainer{
-    flex-direction: row;
-    flex-wrap: nowrap;
-  }
-  </style>
+
 
 </head>
 <body>
-
 <script>
-function addCard() {
-  const img1 = document.getElementById('input1').value;
-  const description = document.getElementById('input2').value;
+  function addCard(){
+    const img = button.dataset.img;
+  }
 
-  const cardData = { card: { img_url: img1, description: description } };
-
-
-  fetch('/cards', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(cardData),
-  })
-  .then(response => response.json())
-    .then(data => {
-      console.log('Создана новая карточка:', data);
-    })
-}
 </script>
 
   <% if admin_signed_in? %>
     <div class="container">
-    <form id="dynamicForm">
-      <label for="input1">Адрес изображения</label>
-      <input type="text" id="input1" name="input1" required>
+    <%= form_with(model: Card.new, url: cards_path, local:true, id: 'dynamicForm') do |form| %>
+      <label for="card_img_url"> Адрес изображения</label>
+      <%= form.text_field :img_url, required: true %>
 
-      <label for="input2">Описание</label>
-      <input type="text" id="input2" name="input2" required>
+      <label for="card_description"> Описание</label>
+      <%= form.text_field :description, required: true %>
 
-      <button type="button" class="btn btn-info" onclick="addCard()">Добавить карточку</button>
-    </form>
-  </div>
+      <%= form.submit "Добавить карточку", class: 'btn btn-info' %>
+
+    <% end %>
+
+    </div>
 
   <% end %>
 
   <div> <h1>Наши котики</h1> </div>
-  <div class="container mt-4">
-    <div class="row">
+
+  <div class="cardContainer">
+    <% @k.each do |card| %>
       <div class="col-md-4">
         <div class="card-container">
           <div class="card">
             <div class="card-front">
-              <img src="https://cdn.pixabay.com/photo/2016/11/29/09/07/cat-1868606_1280.jpg" class="card-img-top" alt="Image">
-              <button class="favorite-button" onclick="toggleFavorite(this)"> ❤️ </button>
+              <img src= <%=card.img_url%> class="card-img-top" alt="Image">
+              <%= form_tag(add_to_favorites_path, method: :post) do %>
+                <%= hidden_field_tag :img_url, card.img_url %>
+                <%= submit_tag "❤️", class: "favorite-button" %>
+              <% end %>
             </div>
             <div class="card-back">
-            <p style="font-size: 20px;" class="card-text text-center" rows="4">Я кошка Рита. Люблю играть с мячиком и мышами. Кормить меня можно только кормом</p>
+            <p style="font-size: 20px;" class="card-text text-center" rows="4"><%=card.description%></p>
             </div>
           </div>
+          <% if admin_signed_in? %>
+            <%= form_tag(delete_path+"?id=#{card.id}", method: :post) do %>
+              <%= hidden_field_tag :id %>
+              <%= submit_tag "Удалить", class: 'btn btn-info' %>
+            <% end %>
+          <% end %>
         </div>
       </div>
-      <div class="col-md-4">
-      <div class="card-container">
-        <div class="card">
-          <div class="card-front">
-            <img src="https://cs6.livemaster.ru/storage/21/39/7ec2b0ee701b4fa69c2970d6c4r2.jpg" class="card-img-top" alt="Image">
-            <button class="favorite-button" onclick="toggleFavorite(this)"> ❤️ </button>
-          </div>
-          <div class="card-back">
-            <p style="font-size: 20px;">Я кошка Рита. Люблю играть с мячиком и мышами. Кормить меня можно только кормом</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div id="cardContainer"></div>
-
-    </div>
+    <% end %>
   </div>
+
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
