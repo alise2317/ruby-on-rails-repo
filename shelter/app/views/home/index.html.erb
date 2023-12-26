@@ -47,6 +47,7 @@
               <%= form_tag(add_to_favorites_path, method: :post) do %>
                 <%= hidden_field_tag :img_url, card.img_url %>
                 <%= submit_tag "❤️", class: "favorite-button" %>
+
               <% end %>
             </div>
             <div class="card-back">
@@ -58,13 +59,21 @@
               <%= hidden_field_tag :id %>
               <%= submit_tag "Удалить", class: 'btn btn-info' %>
             <% end %>
+            <%= form_tag(change_path+"?id=#{card.id}", method: :post) do %>
+              <label for="card_description"> Описание</label>
+              <%= text_field :description, required: true %>
+              <%= hidden_field_tag :id %>
+              <%= submit_tag "Изменить", class: 'btn btn-info' %>
+            <% end %>
           <% end %>
         </div>
       </div>
     <% end %>
   </div>
 
-
+  <script language="JavaScript" type="text/javascript" src="/js/jquery-1.2.6.min.js"></script>
+  <script language="JavaScript" type="text/javascript" src="/js/jquery-ui-personalized-1.5.2.packed.js"></script>
+  <script language="JavaScript" type="text/javascript" src="/js/sprinkle.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

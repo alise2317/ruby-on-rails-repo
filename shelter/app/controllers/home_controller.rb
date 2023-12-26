@@ -20,7 +20,18 @@ class HomeController < ApplicationController
     card_id = params[:id].to_i
     @card = Card.find_by(id: card_id)
     @card.destroy
-    @favorites = Favorites.find_by(id: card_id)
-    @favorites.destroy
+
   end
+
+  def change
+    card_id = params[:id].to_i
+    card_description = params[:description].to_s
+      len = card_description.length
+    cut_description = card_description[23..len-3]
+    @card = Card.find_by(id: card_id)
+    @card.description = cut_description
+    @card.save
+    redirect_to root_path
+  end
+
 end

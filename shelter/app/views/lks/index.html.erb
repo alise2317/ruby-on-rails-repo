@@ -32,11 +32,9 @@
             </div>
           </div>
         </div>
-        <% if user_signed_in? %>
-          <%= form_tag(show_path+"?id=#{card.id}", method: :post) do %>
-            <%= hidden_field_tag :id %>
-            <%= submit_tag "Хочу посмотреть котика", class: 'btn btn-info' %>
-          <% end %>
+        <%= form_tag(delete_path+"?id=#{favorites.id}", method: :post) do %>
+          <%= hidden_field_tag :id %>
+          <%= submit_tag "Удалить", class: 'btn btn-info' %>
         <% end %>
       </div>
     <% end %>
