@@ -16,9 +16,9 @@
   });
 </script>
 
-<h1> Личный кабинет </h1>
+<h1> <%= t('Personal') %> </h1>
 <br>
-<p style="font-size: 25px;"> Избранное </p>
+<p style="font-size: 25px;"> <%= t('Favorites') %> </p>
 <div class="cardContainer">
     <% @k.each do |favorites| %>
       <div class="col-md-4">
@@ -34,7 +34,7 @@
         </div>
         <%= form_tag(delete_path+"?id=#{favorites.id}", method: :post) do %>
           <%= hidden_field_tag :id %>
-          <%= submit_tag "Удалить", class: 'btn btn-info' %>
+          <%= submit_tag t('Delete'), class: 'btn btn-info' %>
         <% end %>
       </div>
     <% end %>

@@ -16,17 +16,21 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container">
-        <%= link_to 'КотоДомик', root_path, class: 'navbar-brand' %>
+        <%= link_to t('Shelter'), root_path, class: 'navbar-brand' %>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <%= link_to 'Главная', root_path, class: 'nav-link' %>
+              <%= link_to t('Home'), root_path, class: 'nav-link' %>
             </li>
             <li class="nav-item">
-              <%= link_to 'Личный кабинет', lks_path, class: 'nav-link' %>
+              <%= link_to t('Personal'), lks_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'English', {:locale=>'en'}, class: "lang_button" %>
+              <%= link_to 'Russian', {:locale=>'ru'}, class: "lang_button" %>
             </li>
           </ul>
           <ul class="navbar-nav ml-auto">
@@ -36,8 +40,8 @@
                   <%= current_user.email %>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <%= link_to 'Личный кабинет', lks_path, class: 'dropdown-item' %>
-                  <%= link_to 'Выйти', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
+                  <%= link_to t('Personal'), lks_path, class: 'dropdown-item' %>
+                  <%= link_to t('Exit'), destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
                 </div>
               </li>
             <% end %>
@@ -47,17 +51,17 @@
                   <%= current_admin.email %>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <%= link_to 'Личный кабинет', lks_path, class: 'dropdown-item' %>
-                  <%= link_to 'Выйти', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
+                  <%= link_to t('Personal'), lks_path, class: 'dropdown-item' %>
+                  <%= link_to t('Exit'), destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
                 </div>
               </li>
             <% end %>
             <% if not user_signed_in? and not admin_signed_in? %>
             <li class="nav-item">
-            <%= link_to 'Войти для пользователя', new_user_session_path, class: 'nav-link' %>
+            <%= link_to t('SignInUser'), new_user_session_path, class: 'nav-link' %>
           </li>
           <li class="nav-item">
-            <%= link_to 'Войти для админа', new_admin_session_path, class: 'nav-link' %>
+            <%= link_to t('SignInAdmin'), new_admin_session_path, class: 'nav-link' %>
           </li>
             <% end %>
           </ul>
@@ -73,9 +77,9 @@
 
     <!-- Footer -->
     <footer class="bg-light text-center py-3">
-      <p> Понравился котик? Пишите на нашу почту и забирайте котика! <p>
-      <p> Почта: k.tretyakova2505@yandex.ru <p>
-      <p>&copy; 2023 КотоДомик. Все права защищены.</p>
+      <p> <%= t('Footer1') %> <p>
+      <p> <%= t('Footer2') %> <p>
+      <p> &copy; <%= t('Footer3') %> </p>
     </footer>
 
   </body>

@@ -6,9 +6,6 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <%= stylesheet_link_tag 'styles', media: 'all' %>
 
-
-
-
 </head>
 <body>
 <script>
@@ -21,13 +18,13 @@
   <% if admin_signed_in? %>
     <div class="container">
     <%= form_with(model: Card.new, url: cards_path, local:true, id: 'dynamicForm') do |form| %>
-      <label for="card_img_url"> Адрес изображения</label>
+      <label for="card_img_url"> <%= t('ImageAdress') %> </label>
       <%= form.text_field :img_url, required: true %>
 
-      <label for="card_description"> Описание</label>
+      <label for="card_description"> <%= t('Description') %> </label>
       <%= form.text_field :description, required: true %>
 
-      <%= form.submit "Добавить карточку", class: 'btn btn-info' %>
+      <%= form.submit t('AddCard'), class: 'btn btn-info' %>
 
     <% end %>
 
@@ -35,7 +32,7 @@
 
   <% end %>
 
-  <div> <h1>Наши котики</h1> </div>
+  <div> <h1><%= t('OurCats') %></h1> </div>
 
   <div class="cardContainer">
     <% @k.each do |card| %>
@@ -57,13 +54,13 @@
           <% if admin_signed_in? %>
             <%= form_tag(delete_path+"?id=#{card.id}", method: :post) do %>
               <%= hidden_field_tag :id %>
-              <%= submit_tag "Удалить", class: 'btn btn-info' %>
+              <%= submit_tag ('Delete'), class: 'btn btn-info' %>
             <% end %>
             <%= form_tag(change_path+"?id=#{card.id}", method: :post) do %>
-              <label for="card_description"> Описание</label>
+              <label for="card_description"> <%= t('Description') %></label>
               <%= text_field :description, required: true %>
               <%= hidden_field_tag :id %>
-              <%= submit_tag "Изменить", class: 'btn btn-info' %>
+              <%= submit_tag t('Change'), class: 'btn btn-info' %>
             <% end %>
           <% end %>
         </div>
@@ -74,6 +71,7 @@
   <script language="JavaScript" type="text/javascript" src="/js/jquery-1.2.6.min.js"></script>
   <script language="JavaScript" type="text/javascript" src="/js/jquery-ui-personalized-1.5.2.packed.js"></script>
   <script language="JavaScript" type="text/javascript" src="/js/sprinkle.js"></script>
+
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
