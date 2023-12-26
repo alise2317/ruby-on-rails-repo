@@ -4,6 +4,7 @@
   }
   
   .card {
+    margin-top: 15px;
     width: 300px; /* Ширина карточки */
     height: 400px; /* Высота карточки */
     transform-style: preserve-3d;

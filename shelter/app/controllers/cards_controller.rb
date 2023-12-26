@@ -7,6 +7,7 @@ class CardsController < ApplicationController
     else
       render json: @card.errors, status: :unprocessable_entity
     end
+    
   end
 
   private

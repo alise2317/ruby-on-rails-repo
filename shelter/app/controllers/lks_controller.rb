@@ -8,5 +8,6 @@ class LksController < ApplicationController
     card_id = params[:id].to_i
     @favorites = Favorites.find_by(id: card_id)
     @favorites.destroy
+    redirect_to lks_path
   end
 end
