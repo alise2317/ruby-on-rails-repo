@@ -54,7 +54,7 @@
           <% if admin_signed_in? %>
             <%= form_tag(delete_path+"?id=#{card.id}", method: :post) do %>
               <%= hidden_field_tag :id %>
-              <%= submit_tag ('Delete'), class: 'btn btn-info' %>
+              <%= submit_tag t('Delete'), class: 'btn btn-info' %>
             <% end %>
             <%= form_tag(change_path+"?id=#{card.id}", method: :post) do %>
               <label for="card_description"> <%= t('Description') %></label>
