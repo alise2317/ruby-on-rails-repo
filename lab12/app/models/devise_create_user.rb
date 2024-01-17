@@ -1,0 +1,2 @@
+class DeviseCreateUser < ApplicationRecord
+end

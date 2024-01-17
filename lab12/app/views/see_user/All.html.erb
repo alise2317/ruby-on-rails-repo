@@ -1,0 +1,5 @@
+<p>All users:</p>
+<%@users.each_with_index do |user, index|%>
+  <p><%= (index + 1).to_s + ". " + user.email %></p>
+<%end%>
+<%= button_to "Go back", calc_input_path, class:"btn btn-info", :method => :get %>

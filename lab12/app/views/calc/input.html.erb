@@ -1,0 +1,7 @@
+<div class = "col-4 mb-2" style="margin-top:50px;" >
+<%= form_tag(calc_view_path, :method => "get") do %>
+  <%=number_field_tag(:num, "Input n from 1 to 100", class: "form-control mb-2", min:"1", max:"100", pattern:
+   "^[1-9][0-9]?$|^100$", placeholder: "Input n from 1 to 100", required: "required")%>
+  <%=submit_tag("Automorphic numbers", class:"btn btn-info") %>
+<%end %>
+</div>

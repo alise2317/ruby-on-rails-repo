@@ -1,0 +1,27 @@
+<body>
+  <div class = "container">
+  <div class="col-auto">
+    <div>Result:</div>
+    <table class="table table-hover" class="col-3">
+    <thead>
+      <tr>
+        <th scope="col">N</th>
+        <th scope="col">N^2</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @result.each do |row| %>
+        <tr>
+          <td scope="row"> <%= row %> </td>
+          <td scope="row"> <%= row ** 2 %> </td>
+        </tr>
+      <% end %>
+    </tbody>
+    </table>
+    </div>
+    <div class="row">
+        <div class="col">
+        <a href="input.html" class="btn btn-info active" role="button" aria-pressed="true"> repeat calculation</a>
+        </div>
+  </div>
+</body>

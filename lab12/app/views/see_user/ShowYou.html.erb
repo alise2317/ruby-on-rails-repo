@@ -1,0 +1,5 @@
+<p>Information about profile:</p>
+<p><strong>email</strong> <%= @user.email %></p>
+<p><strong>created at</strong> <%= @user.created_at %></p>
+<p><strong>updated at</strong> <%= @user.updated_at %></p>
+<%= button_to "Go back", calc_input_path, class:"btn btn-info", :method => :get %>
